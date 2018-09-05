@@ -9,7 +9,7 @@ var allQuestions = [
         "option2": "blah blah",
         "option3": "blah blah blah",
         "option4": "blah blah blah blah",
-        "correctAnswer": "1",
+        "correctAnswer": "blah",
     },
 
     {
@@ -19,7 +19,7 @@ var allQuestions = [
         "option2": "blah blah",
         "option3": "blah blah blah",
         "option4": "blah blah blah blah",
-        "correctAnswer": "3",
+        "correctAnswer": "option4",
     },
 
     {
@@ -29,41 +29,73 @@ var allQuestions = [
         "option2": "blah blah",
         "option3": "blah blah blah",
         "option4": "blah blah blah blah",
-        "correctAnswer": "2",
+        "correctAnswer": "option3",
     },
 
 ];
-
-$(document).ready(function () {
-
-
-    console.log(allQuestions);
-
-    console.log(allQuestions[0].choices);
-
     // need a for loop to display the questions/choices onto the page
     // a function to check for the correct answer
     // when clicked on a choice moves onto next question
     // when start is clicked, begin game
 
-    $("#start").on("click", function () {
+var currentQuestion = 0;
+var time = 20;
+var correct =  0;
+var incorrect = 0;
+
+
+
+
+$(document).ready(function () {
+console.log(allQuestions);
+  
+function startQuiz(){
+    $("#start").on("click", function(){
         $("#start").hide();
-        displayQuestion;
-        //timer start//    
-    };
 
-    $("#question").html(allQuestions[1].question);
+        questionTimer();
+        startQuestions();
 
-    function displayQuestion( 
-    for (var i = 0; i < allQuestions.length; i++) {
-        $("#question").html("<h2>" + allQuestions[i] + "</h2>");
+    });
+}
 
+$("#mainArea").on("click", ".answer", function (event){
+
+
+});
+
+setTimeout(questionTimer, 1000 * 10);
+
+function questionTimer (){
+    console.log("20 seconds left");
+    $("#description").html("<div>" + "Time Remaining: " + time + "</div>");
+}     
+
+function startQuestions() {
+    
+    begin = "<p>" + allQuestions[currentQuestion].question + "</p>" + 
+    "<p>" + allQuestions[currentQuestion].option1 + "</p>" + "<p>" + 
+    allQuestions[currentQuestion].option2 + "</p>" +
+    "<p>" + allQuestions[currentQuestion].option3 + "</p>" +
+    "<p>" + allQuestions[currentQuestion].option4 + "</p>";
+    $("#mainArea").html(begin);
+ // $("#mainArea").prepend(Image);
+}
+
+$("#mainArea").on("click", function(event){
+    console.log(allQuestions[currentQuestion].correctAnswer);
+    selectedAnswer = $(this).text();
+    if(selectedAnswer === allQuestions[currentQuestion].correctAnswer) {
+        console.log("correct");
+        correct++;
     }
-)
+    else {
+        console.log("wrong");
+        incorrect++;
+    }
+});
 
-displayQuestion();
-
-
+startQuiz();
 
 
 

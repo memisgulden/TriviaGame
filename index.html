@@ -19,40 +19,30 @@
 
 <body>
 
-<!-- start off with a "begin" page -->
-<!-- each question in own div, one at a time -->
-<!-- 15 seconds per question -->
-<!-- some variable: question bank, wins, loses, timer --> 
-<!-- can only click once, after click display right or wrong-->
-<!-- click moves to next slide-->
+    <!-- start off with a "begin" page -->
+    <!-- each question in own page, one at a time -->
+    <!-- 15 seconds per question -->
+    <!-- some variable: question bank, wins, loses, timer -->
+    <!-- can only click once, after click display right or wrong-->
+    <!-- click moves to next slide-->
 
-    <h1>The Gang Plays Trivia</h1>
+    <div id="container">
 
-    <h4>A trivia quiz blah blah blah</h4>
+        <div class="jumbotron">
 
-    <a href="#" id="start" class="btn btn-primary btn-lg">Begin</a>
+            <div id="title"></div>
 
-    <div id="quizStart"></div>
+            <div id="description">A trivia quiz blah blah blah</div>
 
-    <div id="quizContainer container-fluid">
+            <div id="mainArea"></div>
 
-        <div id="question">Question 1</div>
+            <a href="#" id="start" class="btn btn-primary btn-lg">Begin</a>
+        </div>
 
-        <label class="option"><input type="radio" name="option" value="1">
-            <span id="opt1">Answer 1</span></label>
 
-        <label class="option"><input type="radio" name="option" value="2">
-            <span id="opt2">Answer 2</span></label>
+    </div>   
 
-        <label class="option"><input type="radio" name="option" value="3">
-            <span id="opt3">Answer 3</span></label>
-
-        <label class="option"><input type="radio" name="option" value="4">
-            <span id="opt4">Answer 4</span></label>
-        
-    </div>  
-
-<!-- show result after the option is clicked-->
+    <!-- show result after the option is clicked-->
 
     <div id="result" class="container" style="display: none"></div>
 
