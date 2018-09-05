@@ -42,6 +42,7 @@ var currentQuestion = 0;
 var time = 20;
 var correct =  0;
 var incorrect = 0;
+var missedQuestions = 0; // if the timer runs out before an answer
 
 
 
@@ -59,12 +60,7 @@ function startQuiz(){
     });
 }
 
-$("#mainArea").on("click", ".answer", function (event){
-
-
-});
-
-setTimeout(questionTimer, 1000 * 10);
+setTimeout(questionTimer, 1000 * 20);
 
 function questionTimer (){
     console.log("20 seconds left");
@@ -74,26 +70,50 @@ function questionTimer (){
 function startQuestions() {
     
     begin = "<p>" + allQuestions[currentQuestion].question + "</p>" + 
-    "<p>" + allQuestions[currentQuestion].option1 + "</p>" + "<p>" + 
-    allQuestions[currentQuestion].option2 + "</p>" +
-    "<p>" + allQuestions[currentQuestion].option3 + "</p>" +
-    "<p>" + allQuestions[currentQuestion].option4 + "</p>";
+    "<p class='opt'>" + allQuestions[currentQuestion].option1 + "</p>" + 
+    "<p class='opt'>" + allQuestions[currentQuestion].option2 + "</p>" +
+    "<p class='opt'>" + allQuestions[currentQuestion].option3 + "</p>" +
+    "<p class='opt'>" + allQuestions[currentQuestion].option4 + "</p>";
     $("#mainArea").html(begin);
- // $("#mainArea").prepend(Image);
+ // $("#mainArea").prepend(Image) question images;
 }
 
-$("#mainArea").on("click", function(event){
+
+//checks for the .opt click //
+$("#mainArea").on("click", ".opt", function(event){
     console.log(allQuestions[currentQuestion].correctAnswer);
     selectedAnswer = $(this).text();
-    if(selectedAnswer === allQuestions[currentQuestion].correctAnswer) {
-        console.log("correct");
-        correct++;
+    console.log(selectedAnswer);
+
+    rightAnswer = allQuestions[currentQuestion].correctAnswer;
+    if (selectedAnswer === rightAnswer) {
+      correct++;
+      console.log("correct");
+      correctChoice();
     }
+
     else {
         console.log("wrong");
         incorrect++;
+        incorrectChoice();
     }
 });
+
+// if correct, change screen to correct else wrong //
+
+function correctChoice(){
+    correctPage = "<h1> Right </h1>";
+    $("#mainArea").html(correctPage);
+}
+
+function incorrectChoice(){
+    incorrectPage = "<h1> Wrong </h1>";
+    $("#mainArea").html(incorrectPage);
+
+}
+
+
+
 
 startQuiz();
 
