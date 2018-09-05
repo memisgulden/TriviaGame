@@ -104,12 +104,25 @@ $("#mainArea").on("click", ".opt", function(event){
 function correctChoice(){
     correctPage = "<h1> Right </h1>";
     $("#mainArea").html(correctPage);
+    setTimeout(nextQuestion, 4000);
 }
 
 function incorrectChoice(){
     incorrectPage = "<h1> Wrong </h1>";
     $("#mainArea").html(incorrectPage);
+    setTimeout(nextQuestion, 4000);
+}
 
+function nextQuestion (){
+    if (currentQuestion < allQuestions.length){
+    currentQuestion++;
+    startQuestions();
+    counter = 30;
+    questionTimer();
+    }
+    else {
+        finished ();
+    }
 }
 
 
