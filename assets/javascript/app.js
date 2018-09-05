@@ -1,53 +1,67 @@
 
-// Wrong and right choices
-var correct = 0;
-var incorrect = 0;
-
-//user choice
-var userChoice = [];
-
-//question timer
-var timer = 5000;
-
 // Bank of questions
-var questions = [
+var allQuestions = [
 
-{
-    question: "Q1?",
-    choices: ["1", "2", "3","4"],
-    correctAnswer: 1
-  },
+    {
+        "question": "Q1?",
+        //image//
+        "option1": "blah",
+        "option2": "blah blah",
+        "option3": "blah blah blah",
+        "option4": "blah blah blah blah",
+        "correctAnswer": "1",
+    },
 
-  {
-    question: "Q3?",
-    choices: ["1", "2", "3","4"],
-    correctAnswer: 0
-  },
+    {
+        "question": "Q2?",
+        //image//
+        "option1": "blah",
+        "option2": "blah blah",
+        "option3": "blah blah blah",
+        "option4": "blah blah blah blah",
+        "correctAnswer": "3",
+    },
 
-  {
-    question: "Q4?",
-    choices: ["1", "2", "3", "4"],
-    correctAnswer: 2 
-  },
+    {
+        "question": "Q3?",
+        //image//
+        "option1": "blah",
+        "option2": "blah blah",
+        "option3": "blah blah blah",
+        "option4": "blah blah blah blah",
+        "correctAnswer": "2",
+    },
 
 ];
 
 $(document).ready(function () {
 
-console.log(questions);
 
-$("#question").html(questions[0].question);
+    console.log(allQuestions);
 
-$("#choices").html(questions[0].choices);
-console.log(questions[0].choices);
+    console.log(allQuestions[0].choices);
 
-function answerSubmit ();
-    $("#choices").on("click", function (){
-        console.log(this)
-    });
+    // need a for loop to display the questions/choices onto the page
+    // a function to check for the correct answer
+    // when clicked on a choice moves onto next question
+    // when start is clicked, begin game
 
+    $("#start").on("click", function () {
+        $("#start").hide();
+        displayQuestion;
+        //timer start//    
+    };
 
+    $("#question").html(allQuestions[1].question);
 
+    function displayQuestion( 
+    for (var i = 0; i < allQuestions.length; i++) {
+        $("#question").html("<h2>" + allQuestions[i] + "</h2>");
+
+    }
+)
+
+displayQuestion();
 
 
 

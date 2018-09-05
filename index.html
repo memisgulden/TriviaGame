@@ -28,21 +28,33 @@
 
     <h1>The Gang Plays Trivia</h1>
 
+    <h4>A trivia quiz blah blah blah</h4>
+
     <a href="#" id="start" class="btn btn-primary btn-lg">Begin</a>
 
-    <div class="container">
+    <div id="quizStart"></div>
 
-        <div class="form">
+    <div id="quizContainer container-fluid">
 
-            <h3 id="question"></h3>
-            <select id="choices"></select>
-            
-        </div>    
+        <div id="question">Question 1</div>
+
+        <label class="option"><input type="radio" name="option" value="1">
+            <span id="opt1">Answer 1</span></label>
+
+        <label class="option"><input type="radio" name="option" value="2">
+            <span id="opt2">Answer 2</span></label>
+
+        <label class="option"><input type="radio" name="option" value="3">
+            <span id="opt3">Answer 3</span></label>
+
+        <label class="option"><input type="radio" name="option" value="4">
+            <span id="opt4">Answer 4</span></label>
         
-    </div>
+    </div>  
 
-    <div id="result"></div>
+<!-- show result after the option is clicked-->
 
+    <div id="result" class="container" style="display: none"></div>
 
 
 </body>
