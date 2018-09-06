@@ -1,7 +1,70 @@
 html, body {
     box-sizing: border-box;
-    background-image:url(../images/gplaypattern.png);
+    background-image:url(../images/background.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100%; /* You must set a specified height */
+    background-repeat: no-repeat; /* Do not repeat the image */
     margin: 0;
     padding: 0;
 }
 
+.jumbotron {
+background-color: aqua;
+
+
+}
+
+#container {
+    font-family: 'Open Sans', sans-serif;
+    height: 500px;
+    background: rgba(240, 239, 180, 0.4);    
+
+}
+
+#time {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: #fffc72;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    font-size: 30px;
+
+}
+
+#title {
+    color: #fffc72;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 60px;
+    margin-top: none;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#description {
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    width: 90%;
+    margin-left: 40px;
+    margin-top: 40px;
+    text-shadow: -1px 0 #fffc72, 0 1px #fffc72, 1px 0 #fffc72, 0 -1px #fffc72;
+
+}
+
+#mainArea {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#start {
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    background-color: #fffc72;
+    justify-content: center;
+    margin-left: 40%;
+    margin-top: 20%;
+
+
+}
