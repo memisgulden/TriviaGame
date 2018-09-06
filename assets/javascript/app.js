@@ -10,7 +10,6 @@ var allQuestions = [
         "option3": "Deliver a Rum Ham",
         "option4": "Dee Reynolds",
         "correctAnswer": "Demonstrate your value",
-        "wrongimage": "<iframe src='https://giphy.com/embed/13Kv9fmcwMNKwg' width='480' height='269' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='https://giphy.com/gifs/family-13Kv9fmcwMNKwg'>via GIPHY</a></p>",
     },
 
     {
@@ -55,7 +54,7 @@ var allQuestions = [
 
     {
         "question": "What was the name of Frank's street gang from the '50's?",
-        "image": "<img class='curl-corner' style='height='400px' width='500px'' src='assets/images/yellowjacket.gif'>",
+        "image": "<img class='curl-corner' style='height=250px width=500px' src='assets/images/yellowjacket.gif'>",
         "option1": "Yellow Jacket Boys",
         "option2": "The Birds",
         "option3": "The Pecan Sandies",
@@ -65,7 +64,7 @@ var allQuestions = [
 
     {
         "question": "Who does Charlie discover in the health-insurance conspiracy?",
-        "image": "<img class='curl-corner' style='height='400px' width='500px'' src='assets/images/pepesilvia.gif'>",
+        "image": "<img class='curl-corner' style='height=800px width=800px' src='assets/images/pepesilvia.gif'>",
         "option1": "Mantis Toboggan",
         "option2": "Pepe Silvia",
         "option3": "Hoss Bonaventure",
@@ -85,7 +84,7 @@ var allQuestions = [
 
     {
         "question": "What is Charlie's favorite food?",
-        "image": "<img class='curl-corner' style='height='300px' width='300px'' src='assets/images/milksteak.gif'>",
+        "image": "<img class='curl-corner' style='height=400px width=500px'' src='assets/images/milksteak.gif'>",
         "option1": "Glue",
         "option2": "Fight Milk",
         "option3": "Milk",
@@ -95,7 +94,7 @@ var allQuestions = [
 
     {
         "question": "What was Dee's nickname in highschool?",
-        "image": "<img class='curl-corner' style='height='100px' width='300px'' src='assets/images/aluminum.jpg'>",
+        "image": "<img class='curl-corner' style='height=100px width=300px'' src='assets/images/aluminum.jpg'>",
         "option1": "Sweet Dee",
         "option2": "The Bird",
         "option3": "Aluminum Monster",
@@ -117,6 +116,7 @@ var missedQuestions = 0; // if the timer runs out before an answer
 
 
 $(document).ready(function () {
+ console.log("I work!");   
 
     // on click start the timer, remove the button, generate q's    
     function startQuiz() {
@@ -133,6 +133,7 @@ $(document).ready(function () {
 
         });
     }
+
 
 
     // timer
@@ -154,22 +155,29 @@ $(document).ready(function () {
 
 
     function startQuestions() {
-        for (i = 0; i < allQuestions.length; i++) {
-            begin = "<h2>" + allQuestions[currentQuestion].question + "</h2>" +
+        if (currentQuestion < 10) {
+            begin = "<br>" + "<h2>" + allQuestions[currentQuestion].question + "</h2>" + "<br>" +
                 "<p class='opt'>" + allQuestions[currentQuestion].option1 + "</p>" +
                 "<p class='opt'>" + allQuestions[currentQuestion].option2 + "</p>" +
                 "<p class='opt'>" + allQuestions[currentQuestion].option3 + "</p>" +
                 "<p class='opt'>" + allQuestions[currentQuestion].option4 + "</p>";
             $("#mainArea").html(begin);
         }
+        else {
+            finished();
+        }
     }
 
 
+    var audio = new Audio();
+    audio.src = "https://youtu.be/idoYCVLh2qI";
+
     //checks for the .opt click //
     $("#mainArea").on("click", ".opt", function () {
-        // console.log(allQuestions[currentQuestion].correctAnswer);
+        audio.play();
+        console.log(allQuestions[currentQuestion].correctAnswer);
         selectedAnswer = $(this).text();
-        // console.log(selectedAnswer);
+        console.log(selectedAnswer);
         rightAnswer = allQuestions[currentQuestion].correctAnswer;
 
         if (selectedAnswer === rightAnswer) {
@@ -189,7 +197,7 @@ $(document).ready(function () {
 
     function correctChoice() {
         correct++;
-        correctPage = "<h1> Yippie-kay-yay, Mr.Falcon! </h1>" + allQuestions[currentQuestion].correctAnswer + " was the correct answer!" + 
+        correctPage = "<h1> Looks like you ynow your Bird Law!! </h1>" + allQuestions[currentQuestion].correctAnswer + " was the correct answer!" + 
         allQuestions[currentQuestion].image;
         $("#mainArea").html(correctPage);
         setTimeout(nextQuestion, 4000);
@@ -198,7 +206,7 @@ $(document).ready(function () {
     function incorrectChoice() {
         incorrect++;
         incorrectPage = "<h1> You gangly, uncoordinated b$@#! </h1>" + allQuestions[currentQuestion].correctAnswer + " was the correct answer!" 
-        + "<img class='curl-corner' style='height='100px' width='300px'' src='assets/images/angry.gif'>";
+        + "<img class='curl-corner' style='height=auto width=300px' src='assets/images/angry.gif'>";
         $("#mainArea").html(incorrectPage);
         setTimeout(nextQuestion, 4000);
     }
@@ -216,15 +224,22 @@ $(document).ready(function () {
     }
 
     function finished() {
-        gameOver = "<h1> Game Over </h1>" + "<p> Correct:" + correct + "</p>" +
-            "<p> Incorrect:" + incorrect + "</p>" + "<p> Missed:" + missedQuestions + "</p>";
+        gameOver = "<h1> Game Over Boners </h1>" + "<p> Correct: " + correct + "</p>" +
+            "<p> Incorrect: " + incorrect + "</p>" + "<p> Missed: " + missedQuestions + "</p>";
+
         $("#mainArea").html(gameOver);
+
         $("#description").hide();
-        if (incorrect > 3){
-            $("#mainArea").append("You suck!!!" + "<img class='curl-corner' style='height='500px' width='500px'' src='assets/images/crying.gif'>");
+
+        $("#time").hide();
+
+        clearInterval(time);
+
+        if (incorrect,missedQuestions > 3){
+            $("#mainArea").append("You suck!!!" + "<img class='curl-corner' style='height=400px width=400px' src='assets/images/crying.gif'>");
         }
         else {
-            $("#mainArea").append("Your almost as great as Kitten Mittons!!!" + "<img class='curl-corner' style='height='500px' width='500px'' src='assets/images/winner.gif'>");
+            $("#mainArea").append("You're almost as great as Kitten Mittons!!!" + "<img class='curl-corner' style='height=300px width=500px' src='assets/images/winner.gif'>");
         }
 
     }
@@ -232,7 +247,7 @@ $(document).ready(function () {
     function timeout() {
         missedQuestions++;
         timesout = "<h1> You ran out of time you idiot... </h1>" +         
-        "<img class='curl-corner' style='height='300px' width='300px'' src='assets/images/whoops.gif'>";
+        "<img class='curl-corner' style='height='500px' width='500px'' src='assets/images/whoops.gif'>";
         $("#mainArea").html(timesout);
         setTimeout(nextQuestion, 4000);
         if (currentQuestion >= allQuestions.length) {
